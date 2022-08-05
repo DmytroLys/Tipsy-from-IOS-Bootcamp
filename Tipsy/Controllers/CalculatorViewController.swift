@@ -35,6 +35,11 @@ class CalculatorViewController: UIViewController {
         
     }
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
+        sender.minimumValue = 2
+        splitNumberLabel.text = String(format: "%.f", sender.value)
+        if sender.value == 12 {
+            print(String(format: "%.f", sender.value))
+        }
     }
     @IBAction private func calculatePressed(_ sender: UIButton) {
     print(tip)
