@@ -10,6 +10,8 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    var tip = 0.10
+    
     // MARK: - IBLabels
     @IBOutlet private var billTextField: UITextField!
     @IBOutlet private var zeroPctButton: UIButton!
@@ -19,11 +21,23 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction private func tipChanged(_ sender: UIButton) {
-        zeroPctButton.isSelected = true
+        zeroPctButton.isSelected = false
+        tenPctButton.isSelected = false
+        twentyPctButton.isSelected = false
+        sender.isSelected = true
+        let currentTitle = sender.currentTitle!
+        let titleWithoutPct = String(currentTitle.dropLast())
+        let titleAsNumber = Double(titleWithoutPct)!
+        tip = titleAsNumber / 100
+        
+
+        
+        
     }
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
     }
     @IBAction private func calculatePressed(_ sender: UIButton) {
+    print(tip)
     }
     
     // MARK: - Override methods
@@ -31,6 +45,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
     
     
 }
