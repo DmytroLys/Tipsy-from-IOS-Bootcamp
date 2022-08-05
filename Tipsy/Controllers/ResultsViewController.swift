@@ -10,8 +10,6 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    var totalValue = ""
-    var stringSetings = ""
     
     // MARK: - IB Oultlets
     @IBOutlet private var totalLabel: UILabel!
@@ -19,19 +17,22 @@ class ResultsViewController: UIViewController {
     
     
     // MARK: - IB Actions
-
+    
     @IBAction func recalculatePressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    // MARK: - Property -
+    var totalValue = ""
+    var stringSetings = ""
     
     
-    // MARK: - Override methods
+    // MARK: - Life cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         totalLabel.text = totalValue
         settingsLabel.text = stringSetings
-
+        
     }
-
+    
 }

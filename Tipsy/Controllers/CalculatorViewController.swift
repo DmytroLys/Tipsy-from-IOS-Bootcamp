@@ -9,12 +9,7 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
-    
-    var tip = 0.10
-    var totalAmount = 0.0
-    var numberOfPersons = 2.0
-    var brain = CalculatorBrain()
-    
+
     // MARK: - IBLabels
     @IBOutlet private var billTextField: UITextField!
     @IBOutlet private var zeroPctButton: UIButton!
@@ -35,8 +30,6 @@ class CalculatorViewController: UIViewController {
 
     }
     
-    var tapGesture = UIGestureRecognizer()
-    
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
         sender.minimumValue = 2
         numberOfPersons = sender.value
@@ -50,22 +43,29 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    // MARK: - Property -
+    var tip = 0.10
+    var totalAmount = 0.0
+    var numberOfPersons = 2.0
+    var tapGesture = UIGestureRecognizer()
+    var brain = CalculatorBrain()
     
-    // MARK: - Override methods
+    
+    // MARK: - Life cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTappped(_:)))
         view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         
-        
     }
     
-    @objc func viewTappped(_ sender : UITapGestureRecognizer) {
+    // MARK: - Private merhods -
+    @objc private func viewTappped(_ sender : UITapGestureRecognizer) {
         billTextField.endEditing(true)
     }
     
-    
+    // MARK: - Segue methods -
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
